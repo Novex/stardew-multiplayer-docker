@@ -11,8 +11,5 @@ services:
       - 24642:24642/udp
     volumes:
       - ./valley_saves:/root/.config/StardewValley/Saves/
-      
+
       - ./configs/i3:/root/.config/i3/config
-      - ./configs/alwayson.json:/data/Stardew/Stardew Valley/Mods/Always On Server/config.json
-      - ./configs/unlimitedplayers.json:/data/Stardew/Stardew Valley/Mods/UnlimitedPlayers/config.json
-      - ./configs/autoload.json:/data/Stardew/Stardew Valley/Mods/AutoLoadGame/config.json
