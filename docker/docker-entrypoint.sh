@@ -14,4 +14,7 @@ sleep 5
 i3 &
 export XAUTHORITY=~/.Xauthority
 TERM=xterm
+
+/opt/tail-smapi-log.sh &
+
 /data/Stardew/Stardew\ Valley/StardewValley

@@ -16,10 +16,14 @@ RUN wget https://github.com/Pathoschild/SMAPI/releases/download/3.4.1/SMAPI-3.4.
     rm -f /data/nexus.zip && \
     /bin/bash -c "echo -e \"2\n/data/Stardew/Stardew\ Valley\n1\n\" | /usr/bin/mono /data/nexus/SMAPI\ 3.4.1\ installer/internal/unix-install.exe" 
 
-# Add Mods
-COPY mods/ /data/Stardew/Stardew Valley/Mods/
 
-RUN chmod +x /data/Stardew/Stardew\ Valley/StardewValley
-
+# Add Mods & Scripts
+COPY ["mods/", "/data/Stardew/Stardew Valley/Mods/"]
+COPY scripts/ /opt/
 COPY docker-entrypoint.sh /docker-entrypoint.sh
+
+RUN chmod +x /data/Stardew/Stardew\ Valley/StardewValley \
+        /docker-entrypoint.sh \
+        /opt/*.sh
+
 ENTRYPOINT ["/docker-entrypoint.sh"]
