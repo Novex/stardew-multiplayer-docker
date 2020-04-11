@@ -1,5 +1,7 @@
 #!/bin/bash
 
+trap "echo --- Caught signal to stop server ---; /opt/shutdown.sh; exit 0" SIGTERM SIGINT SIGABRT SIGHUP
+
 if [ -f /tmp/.X10-lock ]; then rm /tmp/.X10-lock; fi
 Xvfb :10 -screen 0 1580x920x24 -ac &
 
@@ -17,4 +19,5 @@ TERM=xterm
 
 /opt/tail-smapi-log.sh &
 
-/data/Stardew/Stardew\ Valley/StardewValley
+/data/Stardew/Stardew\ Valley/StardewValley &
+wait

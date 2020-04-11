@@ -13,3 +13,4 @@ services:
       - ./valley_saves:/root/.config/StardewValley/Saves/
 
       - ./configs/i3:/root/.config/i3/config
+    stop_grace_period: 1m30s
