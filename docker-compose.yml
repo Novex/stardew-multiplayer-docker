@@ -5,12 +5,12 @@ services:
     build: docker
     container_name: stardew
     environment:
-      - VNCPASS=nyanyanya
+      - VNCPASS=${VNC_PASS-nyanyanya}
     ports:
-      - 5902:5900
-      - 24642:24642/udp
+      - ${VNC_PORT-5902}:5900
+      - ${STARDEW_VALLEY_PORT-24642}:24642/udp
     volumes:
-      - ./valley_saves:/root/.config/StardewValley/Saves/
+      - ${STARDEW_SAVE_LOCATION-./valley_saves}:/root/.config/StardewValley/Saves/
 
       - ./configs/i3:/root/.config/i3/config
     stop_grace_period: 1m30s
