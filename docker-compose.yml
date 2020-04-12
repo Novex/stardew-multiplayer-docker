@@ -11,6 +11,5 @@ services:
       - ${STARDEW_VALLEY_PORT-24642}:24642/udp
     volumes:
       - ${STARDEW_SAVE_LOCATION-./valley_saves}:/root/.config/StardewValley/Saves/
-
-      - ./configs/i3:/root/.config/i3/config
+    
     stop_grace_period: 1m30s

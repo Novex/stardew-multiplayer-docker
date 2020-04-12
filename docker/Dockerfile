@@ -19,6 +19,9 @@ RUN wget https://github.com/Pathoschild/SMAPI/releases/download/3.4.1/SMAPI-3.4.
 RUN apt-get update
 RUN apt-get install -y procps xdotool
 
+# Add i3 window manager config
+COPY configs/i3 /root/.config/i3/config
+
 # Add Mods & Scripts
 COPY ["mods/", "/data/Stardew/Stardew Valley/Mods/"]
 COPY scripts/ /opt/
