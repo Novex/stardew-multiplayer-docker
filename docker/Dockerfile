@@ -16,8 +16,9 @@ RUN wget https://github.com/Pathoschild/SMAPI/releases/download/3.4.1/SMAPI-3.4.
     rm -f /data/nexus.zip && \
     /bin/bash -c "echo -e \"2\n/data/Stardew/Stardew\ Valley\n1\n\" | /usr/bin/mono /data/nexus/SMAPI\ 3.4.1\ installer/internal/unix-install.exe" 
 
+# xdotool to inject keyboar/mouse movements, gettext-base for envsubst
 RUN apt-get update
-RUN apt-get install -y procps xdotool
+RUN apt-get install -y procps xdotool gettext-base
 
 # Add i3 window manager config
 COPY configs/i3 /root/.config/i3/config

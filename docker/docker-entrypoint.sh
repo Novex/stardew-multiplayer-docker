@@ -17,7 +17,37 @@ i3 &
 export XAUTHORITY=~/.Xauthority
 TERM=xterm
 
+# Configure the mods
+for modPath in /data/Stardew/Stardew\ Valley/Mods/*/
+do
+  mod=$(basename "$modPath")
+
+  # Normalize mod name ot uppercase and only characters, eg. "Always On Server" => ENABLE_ALWAYSONSERVER_MOD
+  var="ENABLE_$(echo "${mod^^}" | tr -cd '[A-Z]')_MOD"
+
+  # Remove the mod if it's not enabled
+  if [ "${!var}" != "true" ]; then
+    echo "Removing ${modPath} (${var}=${!var})"
+    rm -rf "$modPath"
+    continue
+  fi
+
+  if [ -f "${modPath}/config.json.template" ]; then
+    echo "Configuring ${modPath}config.json"
+
+    # Seed the config.json only if one isn't manually mounted in (or is empty)
+    if [ "$(cat "${modPath}config.json")" == "" ]; then
+      envsubst < "${modPath}config.json.template" > "${modPath}config.json"
+    fi
+  fi
+done
+
 /opt/tail-smapi-log.sh &
 
 /data/Stardew/Stardew\ Valley/StardewValley &
-wait
+wait $!
+
+# If we made it here Stardew exited so kill everything else since there's no point for the container to be running
+sleep 5
+echo killing
+kill -9 1
