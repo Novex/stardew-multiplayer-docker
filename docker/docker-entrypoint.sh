@@ -42,6 +42,8 @@ do
   fi
 done
 
+/opt/configure-remotecontrol-mod.sh
+
 /opt/tail-smapi-log.sh &
 
 /data/Stardew/Stardew\ Valley/StardewValley &

@@ -1,0 +1,6 @@
+version: '2.2'
+
+services:
+  valley:
+    volumes:
+      - ./configs/remotecontrol.json:/data/Stardew/Stardew Valley/Mods/RemoteControl/config.json

@@ -20,18 +20,16 @@ click() {
     xdotool search --class Stardew mouseup 1
 }
 
-type slash
-type d
-type e
-type b
-type u
-type g
-type space
+type t
+type exclam
 type s
-type l
-type e
-type e
-type p
+type h
+type u
+type t
+type d
+type o
+type w
+type n
 type Return
 
 sleep 60

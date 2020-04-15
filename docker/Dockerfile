@@ -18,7 +18,7 @@ RUN wget https://github.com/Pathoschild/SMAPI/releases/download/3.4.1/SMAPI-3.4.
 
 # xdotool to inject keyboar/mouse movements, gettext-base for envsubst
 RUN apt-get update
-RUN apt-get install -y procps xdotool gettext-base
+RUN apt-get install -y procps xdotool gettext-base jq
 
 # Add i3 window manager config
 COPY configs/i3 /root/.config/i3/config
