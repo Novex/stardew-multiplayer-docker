@@ -28,6 +28,12 @@ COPY ["mods/", "/data/Stardew/Stardew Valley/Mods/"]
 COPY scripts/ /opt/
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
+# Add a symlink so save backups end up in the right place
+RUN ln -s /root/.config/StardewValley/Saves/save-backups /data/Stardew/Stardew\ Valley/save-backups
+
+# Volume for save games
+VOLUME /root/.config/StardewValley/Saves/
+
 RUN chmod +x /data/Stardew/Stardew\ Valley/StardewValley \
         /docker-entrypoint.sh \
         /opt/*.sh

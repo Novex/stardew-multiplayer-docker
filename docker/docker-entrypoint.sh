@@ -42,10 +42,15 @@ do
   fi
 done
 
+# Run extra steps for certain mods
 /opt/configure-remotecontrol-mod.sh
+
+# Ensure the save-backups dir exists in the persistent volume
+mkdir -p /root/.config/StardewValley/Saves/save-backups
 
 /opt/tail-smapi-log.sh &
 
+# Ready to start!
 /data/Stardew/Stardew\ Valley/StardewValley &
 wait $!
 

@@ -59,6 +59,16 @@ services:
       - REMOTE_CONTROL_DEFAULT_ADMINS=${REMOTE_CONTROL_DEFAULT_ADMINS-}   # A list of comma-separated json objects to use as default admins, eg: {id: "123456789", name: "Seb"}, {id: "987654321", name: "Kitz"}
       - REMOTE_CONTROL_SHOULD_ASSIGN_ADMIN_TO_FIRST_CABIN_FARMER=${REMOTE_CONTROL_SHOULD_ASSIGN_ADMIN_TO_FIRST_CABIN_FARMER-true}   # Give the first player that connects admin privileges
 
+      ## Save Backup mod
+      # Disabling this will stop saves being backed up
+      - ENABLE_SAVEBACKUP_MOD=${ENABLE_SAVEBACKUP_MOD-true}
+
+      ## Chat Commands mod
+      - ENABLE_CHATCOMMANDS_MOD=${ENABLE_CHATCOMMANDS_MOD-false}
+
+      ## Console Commands mod
+      - ENABLE_CONSOLECOMMANDS_MOD=${ENABLE_CONSOLECOMMANDS_MOD-false}
+
       ## Time Speed mod
       - ENABLE_TIMESPEED_MOD=${ENABLE_TIMESPEED_MOD-false}
 
