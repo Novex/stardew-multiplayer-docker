@@ -36,7 +36,7 @@ do
     echo "Configuring ${modPath}config.json"
 
     # Seed the config.json only if one isn't manually mounted in (or is empty)
-    if [ "$(cat "${modPath}config.json")" == "" ]; then
+    if [ "$(cat "${modPath}config.json" 2> /dev/null)" == "" ]; then
       envsubst < "${modPath}config.json.template" > "${modPath}config.json"
     fi
   fi
