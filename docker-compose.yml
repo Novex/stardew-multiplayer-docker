@@ -3,6 +3,7 @@ version: '2.2'
 services:
   valley:
     build: docker
+    restart: always
     container_name: stardew
     environment:
       - VNCPASS=${VNC_PASS-nyanyanya}
