@@ -1,4 +1,4 @@
-version: '2.2'
+version: '2.3'
 
 services:
   valley:
@@ -131,4 +131,23 @@ services:
     volumes:
       - ${STARDEW_SAVE_LOCATION-./valley_saves:}/root/.config/StardewValley/Saves/
     
-    stop_grace_period: 1m30s
+    stop_grace_period: 90s
+
+    labels:
+      stardew.autoheal: "true"
+      autoheal.stop.timeout: 90
+
+    healthcheck:
+      test: ['CMD', 'bash', '-c', '[ "$$(echo -e \\x88\\x00\\x00\\x00\\x00 | nc -q 1 -u localhost 24642 | tail -c 13)" == "StardewValley" ]']
+      interval: 5s
+      timeout: 5s
+      retries: 3
+      start_period: 60s
+
+  autoheal:
+    image: willfarrell/autoheal
+    restart: always
+    environment: 
+      - AUTOHEAL_CONTAINER_LABEL=stardew.autoheal
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
